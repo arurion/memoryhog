@@ -10,7 +10,7 @@
 		padding:0;
 		width:100%;
 	}
-	main{
+	.main{
 		max-width:35em;
 		margin:0 auto;
 	}
@@ -22,11 +22,16 @@
 		margin: auto;
 		padding: 0.6em 0;
 	}
+	.footer_text{
+		width:23em;
+		margin:3em auto 0 auto;
+		text-align: left;
+	}
 
 </style>
 
 </head>
-<body>
+<body class="main">
     <header>
         <h1>Javascriptメモリ負荷ツール</h1>
         <nav>
@@ -38,7 +43,7 @@
         </nav>
     </header>
 
-    <main>
+    <main class="footer_text">
         <section id="section1">
             <h2>Web Worker大量起動</h2>
             <iframe src="memoryhog/NewFile2.html"></iframe>
