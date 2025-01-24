@@ -3,16 +3,16 @@
     <div id="status">現在の状態: オフ</div>
 
     <script>
-        let isOn = false;
+        let isOn2 = false;
         const button = document.getElementById('toggleButton');
         const statusDiv = document.getElementById('status');
 
         button.addEventListener('click', () => {
-            isOn = !isOn;
-            button.textContent = isOn ? 'オフ' : 'オン';
-            statusDiv.textContent = `現在の状態: ${isOn ? 'オン' : 'オフ'}`;
+            ¥sOn2 = !isOn2;
+            button.textContent = isOn2 ? 'オフ' : 'オン';
+            statusDiv.textContent = `現在の状態: ${isOn2 ? 'オン' : 'オフ'}`;
 
-            if (isOn) {
+            if (isOn2) {
                 // オンのときに処理を開始
                 startProcessing();
             } else {
@@ -24,7 +24,7 @@
         let intervalId;
 
         function startProcessing() {
-            while(isOn) {
+            while(isOn2) {
                 console.log('処理中...');
                 // ここに実行したい処理を追加
 var newWorkerViaBlob = function(relativePath) {
