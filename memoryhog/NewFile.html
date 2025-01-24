@@ -1,0 +1,35 @@
+
+<body>
+    <button id="toggleButton">オン</button>
+    <div id="status">現在の状態: オフ</div>
+
+    <script>
+        let isOn = false;
+        const button = document.getElementById('toggleButton');
+        const statusDiv = document.getElementById('status');
+
+        button.addEventListener('click', () => {
+            isOn = !isOn;
+            button.textContent = isOn ? 'オフ' : 'オン';
+            statusDiv.textContent = `現在の状態: ${isOn ? 'オン' : 'オフ'}`;
+
+            if (isOn) {
+                // オンのときに処理を開始
+                startProcessing();
+            } else {
+                // オフのときに処理を停止
+                stopProcessing();
+            }
+        });
+
+        let intervalId;
+
+        function startProcessing() {let memoryHog = []; while (isOn) { memoryHog.push(new Array(1000).fill('memory hog')); }
+        }
+
+        function stopProcessing() {
+            memoryHog = null
+            console.log('処理を停止しました。');
+        }
+    </script>
+</body>

@@ -1,0 +1,46 @@
+<body>
+    <button id="toggleButton">オン</button>
+    <div id="status">現在の状態: オフ</div>
+
+    <script>
+        let isOn = false;
+        const button = document.getElementById('toggleButton');
+        const statusDiv = document.getElementById('status');
+
+        button.addEventListener('click', () => {
+            isOn = !isOn;
+            button.textContent = isOn ? 'オフ' : 'オン';
+            statusDiv.textContent = `現在の状態: ${isOn ? 'オン' : 'オフ'}`;
+
+            if (isOn) {
+                // オンのときに処理を開始
+                startProcessing();
+            } else {
+                // オフのときに処理を停止
+                stopProcessing();
+            }
+        });
+
+        let intervalId;
+
+        function startProcessing() {
+            while(isOn) {
+                console.log('処理中...');
+                // ここに実行したい処理を追加
+var newWorkerViaBlob = function(relativePath) {
+  var baseURL = window.location.href.replace(/\\/g, '/').replace(/\/[^\/]*$/, '/');
+  var array = ['importScripts("' + baseURL + relativePath + '");'];
+  var blob = new Blob(array, {type: 'text/javascript'});
+  var url = window.URL.createObjectURL(blob);
+  return new Worker(url);
+};
+var worker = newWorkerViaBlob('./worker.js');
+            }
+        }
+
+        function stopProcessing() {
+           
+window.location.reload();            console.log('処理を停止しました。');
+        }
+    </script>
+</body>
