@@ -50,31 +50,36 @@
             <h2>Array大量作成</h2>
             <iframe src="memoryhog/NewFile.html"></iframe>
 	<h2>CPU</h2>
-	<button onclick="let cpuWorker = new Worker(URL.createObjectURL(new Blob([`
-    onmessage = function() {
-        ${overheatCPU.toString()}
-        overheatCPU();
-    }
-`], {type: 'application/javascript'})));
-
-cpuWorker.postMessage('start');">これのみ作りが雑です</button>
+ <button id="overheatButton">CPUを過熱する</button>
 	<p>クリックするたび処理が増えます</p>
         </section>
       <h4>非常に重くなるためフリーズした場合再起動・再読み込み・タブを閉じる・タスクキルをおすすめします</h4>
     </main>
 
-<script>function overheatCPU() {
-    while(true) {
-        let now = Date.now();
-        while(Date.now() - now < 1) {
-            // より複雑な浮動小数点演算を無限ループ内で行う
-            for(let i = 0; i < 1000000; i++) {
-                Math.sqrt(Math.random() * 3333);
+   <script>
+        function overheatCPU() {
+            while (true) {
+                let now = Date.now();
+                while (Date.now() - now < 1) {
+                    // より複雑な浮動小数点演算を無限ループ内で行う
+                    for (let i = 0; i < 1000000; i++) {
+                        Math.sqrt(Math.random() * 3333);
+                    }
+                }
             }
         }
-    }
-}
 
+        // ボタンのクリックイベントを設定
+        document.getElementById('overheatButton').addEventListener('click', function() {
+            // Web WorkerでCPU過熱を別スレッドで実行
+            let cpuWorker = new Worker(URL.createObjectURL(new Blob([`
+                onmessage = function() {
+                    (${overheatCPU.toString()})();
+                }
+            `], { type: 'application/javascript' })));
+            cpuWorker.postMessage('start');
+        });
+    </script>
 </script>
 </body>
 </html>
